@@ -16,6 +16,16 @@ socket.on('newMessage', function( message ) {
 	list.prepend(li)
 });
 
+socket.on('newLocationMessage', ( message ) => {
+	let list = $('#messages');
+	let li = $('<li></li>');
+	let ankor = $('<a target="_blank">My current location</a>');
+	li.text(`${message.from}`);
+	ankor.attr('href', message.url);
+	li.append(ankor);
+	list.prepend(li);
+})
+
 socket.on('disconnect', function() {
 	console.log('Disconnected!')
 });
@@ -40,7 +50,6 @@ locationBtn.on('click', () => {
 	}
 
 	navigator.geolocation.getCurrentPosition(( position ) => {
-		console.log(position)
 		socket.emit('createLocationMessage', {
 			latitude: position.coords.latitude,
 			longitude: position.coords.longitude
