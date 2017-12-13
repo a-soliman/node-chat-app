@@ -20,11 +20,12 @@ describe('generateLocationMessage', () => {
 		let from = 'SomeName';
 		let latitude = 2;
 		let longitude = 1;
+		let url = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
 		let res = generateLocationMessage(from, latitude, longitude);
 
 		expect(res.from).toBe(from);
-		expect(res.url).toBe(`https://www.google.com/maps?q=${latitude},${longitude}`);
+		expect(res.url).toBe(url);
 		expect(res.createdAt).toBeTruthy();
 	})
 })
