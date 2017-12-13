@@ -9,6 +9,11 @@ socket.on('connect', function() {
 
 socket.on('newMessage', function( message ) {
 	console.log('new message', message);
+
+	let list = $('#messages');
+	let li = $('<li></li>');
+	li.text(`${message.from}: ${message.text}`)
+	list.prepend(li)
 });
 
 socket.on('disconnect', function() {
@@ -29,6 +34,6 @@ $('#message-form').on('submit', function(e) {
 		from: 'User',
 		text: $('[name=message]').val()
 	}, function() {
-		
+
 	})
 })
