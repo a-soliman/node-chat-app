@@ -21,3 +21,14 @@ socket.emit('createMessage', {
 }, ( data ) => {
 	console.log(data)
 });
+
+$('#message-form').on('submit', function(e) {
+	e.preventDefault();
+
+	socket.emit('createMessage', {
+		from: 'User',
+		text: $('[name=message]').val()
+	}, function() {
+		
+	})
+})
