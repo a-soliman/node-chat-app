@@ -15,3 +15,9 @@ socket.on('disconnect', function() {
 	console.log('Disconnected!')
 });
 
+socket.emit('createMessage', {
+	from: 'Frank',
+	text: 'Hi!!'
+}, ( data ) => {
+	console.log(data)
+});
