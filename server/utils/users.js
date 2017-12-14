@@ -38,10 +38,13 @@ class Users {
 	};
 
 	getRoomsList () {
-		return this.users.map((user) => user.room);
-	}
+		let rooms = {};
 
-
+		this.users.map((user) => {
+			rooms[user.room] = true;
+		});
+		return Object.keys(rooms);
+	};
 }
 
 module.exports = { Users };
