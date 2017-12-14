@@ -1,5 +1,7 @@
 select {
-	height: 40px; background-color: white;
+	height: 40px; 
+	background-color: white;
+	color: #2c5f81;
 }
 
 .or-container {

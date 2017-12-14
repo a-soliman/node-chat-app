@@ -39,11 +39,21 @@ class Users {
 
 	getRoomsList () {
 		let rooms = {};
+		let roomsArray = [];
 
 		this.users.map((user) => {
-			rooms[user.room] = true;
+			if(rooms[user.room]) {
+				rooms[user.room]++;
+			} else {
+				rooms[user.room] = 1;
+			}
 		});
-		return Object.keys(rooms);
+		 
+		Object.keys(rooms).forEach((key) => {
+			roomsArray.push({room: key, users: rooms[key]});
+		});
+
+		return roomsArray;
 	};
 }
 
