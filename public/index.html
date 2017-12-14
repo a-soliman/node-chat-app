@@ -6,6 +6,7 @@
 	<title>Join | Chat App</title>
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/styles.css">
+	<link rel="stylesheet" href="/css/index-style.css">
 </head>
 <body class="centered-form">
 	<div class="centered-form__form">
@@ -21,7 +22,16 @@
 					autofocus >
 			</div>
 			<div class="form-field">
-				<label for="">Room Name</label>
+				<label for="">Active Rooms</label>
+				<select id="active-rooms" name="activeRoom"></select>
+			</div>
+
+			<div class="or-container">
+				<div class="or-span">OR</div>
+			</div>
+
+			<div class="form-field">
+				<label for="room">Create Room</label>
 				<input 
 					type="text"
 					name="room">
@@ -31,6 +41,8 @@
 			</div>
 		</form>
 	</div>
-
+	
+	<script src="/js/libs/jquery-3.2.1.min.js"></script>
+	<script src="/js/index.js"></script>
 </body>
 </html>

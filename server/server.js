@@ -17,31 +17,32 @@ let users = new Users();
 
 app.use(express.static(publicPath));
 
+app.get('/rooms', ( req, res ) => {
+	res.status(200).send(users.getRoomsList())
+})
+
 io.on('connection', (socket) => {
 	console.log('New user connected!');
 
 	
 
 	socket.on('join', ( params, callback ) => {
-		if( !isRealString(params.name) || !isRealString(params.room) ) {
+		if( !isRealString(params.name) || (!isRealString(params.room)  && !params.activeRoom)) {
 			return callback('Name and room name are required..');
 		}
-		// START HERE
-		// let roomUsers = users.getUsersList(params.room);
-		// console.log('room users: ', roomUsers)
-		// let dublicated = roomUsers.filter((user) => user === params.name);
-		// console.log(dublicated)
-		// if(dublicated.length) {
-		// 	console.log('========')
-		// 	console.log('dublicated===', dublicated)
-		// 	console.log('========')
-		// 	return callback('A user with the same name exists in the room.')
-		// }
 
+		if(params.activeRoom && !isRealString(params.room)) {
+			params.room = params.activeRoom;
+		}
 		if( !users.isUniqueUser(params.room, params.name)) {
 			return callback('A user with the same name exists in the room.');
 		}
-		//END HERE
+		// // Listing active rooms start
+		// let activeRooms = users.getRoomsList();
+		// callback(activeRooms)
+		// console.log(users.getRoomsList())
+		// // Listing active rooms End
+
 		socket.join(params.room);
 		users.removeUser(socket.id)
 		users.addUser(socket.id, params.name, params.room)

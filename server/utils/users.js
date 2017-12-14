@@ -37,6 +37,10 @@ class Users {
 		return dublicated.length ? false : true;
 	};
 
+	getRoomsList () {
+		return this.users.map((user) => user.room);
+	}
+
 
 }
 

@@ -1,0 +1,15 @@
+select {
+	height: 40px; background-color: white;
+}
+
+.or-container {
+	text-align: center;
+}
+.or-span {
+	padding: 11px; 
+	border-radius: 50%;
+	background-color: #559fbf; 
+	color: white;
+	width: 43px;
+	display: inline-block;
+}
