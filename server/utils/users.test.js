@@ -70,5 +70,5 @@ describe('Users', () => {
 		expect(res).toEqual(userToRemove);
 		expect(users.users.length).toBe(2);
 
-	})
+	});
 })

@@ -66,6 +66,16 @@ socket.on('disconnect', function() {
 	console.log('Disconnected!');
 });
 
+socket.on('updateUserList', (users) => {
+	let ol = $('<ol></ol>');
+
+	users.forEach((user) => {
+		ol.append($('<li></li>').text(user));
+	});
+
+	$('#users').html(ol)
+})
+
 
 
 $('#message-form').on('submit', function(e) {
