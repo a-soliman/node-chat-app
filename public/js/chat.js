@@ -21,6 +21,7 @@ function scrollToButtom() {
 socket.on('connect', function() {
 	console.log('connected to server!');
 	let params = $.deparam(window.location.search);
+	params.room = params.room.toLowerCase();
 
 	socket.emit('join', params, ( err ) => {
 		if( err ) {

@@ -26,6 +26,22 @@ io.on('connection', (socket) => {
 		if( !isRealString(params.name) || !isRealString(params.room) ) {
 			return callback('Name and room name are required..');
 		}
+		// START HERE
+		// let roomUsers = users.getUsersList(params.room);
+		// console.log('room users: ', roomUsers)
+		// let dublicated = roomUsers.filter((user) => user === params.name);
+		// console.log(dublicated)
+		// if(dublicated.length) {
+		// 	console.log('========')
+		// 	console.log('dublicated===', dublicated)
+		// 	console.log('========')
+		// 	return callback('A user with the same name exists in the room.')
+		// }
+
+		if( !users.isUniqueUser(params.room, params.name)) {
+			return callback('A user with the same name exists in the room.');
+		}
+		//END HERE
 		socket.join(params.room);
 		users.removeUser(socket.id)
 		users.addUser(socket.id, params.name, params.room)

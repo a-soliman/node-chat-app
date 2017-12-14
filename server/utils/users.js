@@ -30,6 +30,13 @@ class Users {
 		return namesArray;
 	};
 
+	isUniqueUser ( room, name ) {
+		let roomUsersList = this.getUsersList(room);
+		let dublicated = roomUsersList.filter((user) => user === name);
+
+		return dublicated.length ? false : true;
+	};
+
 
 }
 
